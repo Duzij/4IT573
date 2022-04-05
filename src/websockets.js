@@ -39,3 +39,37 @@ export const sendTodosToAllConnections = async () => {
     connection.send(json)
   }
 }
+
+export const sendTodoDetailToAllConnections = async (id) => {
+
+  const todo = await db('todos').select('*').where('id', id).first()
+
+  const html = await ejs.renderFile('views/_todo_detail.ejs', {
+    todo
+  })
+
+  for (const connection of connections) {
+    const message = {
+      type: "todo_detail",
+      title: todo.text,
+      html,
+    }
+
+    const json = JSON.stringify(message)
+
+    connection.send(json)
+  }
+}
+
+export const sendTodoDeletedToAllConnections = async () => {
+
+  for (const connection of connections) {
+    const message = {
+      type: 'todo_deleted',
+    }
+
+    const json = JSON.stringify(message)
+
+    connection.send(json)
+  }
+}
