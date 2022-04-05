@@ -19,6 +19,13 @@
     <%- include('_todo_detail') %>
   </div>
 
+  <hr />
+
+  <form action="/edit/<%= todo.id %>" method="post">
+    <input type="text" name="text" value="<%= todo.text %>" />
+    <button type="submit">Upravit ToDo!</button>
+  </form>
+
   <script>
     const ws = new WebSocket('ws://localhost:3000')
 

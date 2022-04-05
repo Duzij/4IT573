@@ -13,10 +13,3 @@
   <% } else { %>
     <a href="/toggle/<%= todo.id %>">Hotovo</a>
     <% } %>
-
-<hr />
-
-<form action="/edit/<%= todo.id %>" method="post">
-<input type="text" name="text" value="<%= todo.text %>" />
-<button type="submit">Upravit ToDo!</button>
-</form>
