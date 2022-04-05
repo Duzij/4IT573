@@ -25,12 +25,16 @@
     ws.addEventListener('message', (message) => {
       const json = JSON.parse(message.data)
 
-      if (json.type === "todo_detail") {
-        document.getElementById('detail').innerHTML = json.html
-        document.title = json.title
-      }
-      if (json.type === "todo_deleted") {
-        window.location.replace("/");
+      const id = location.pathname.split('/')[2];
+
+      if (json.id && json.id === id) {
+        if (json.type === "todo_detail") {
+          document.getElementById('detail').innerHTML = json.html;
+          document.title = json.title
+        }
+        if (json.type === "todo_deleted") {
+          window.location.replace("/");
+        }
       }
     })
   </script>
