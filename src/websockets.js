@@ -52,7 +52,7 @@ export const sendTodoDetailToAllConnections = async (id) => {
     const message = {
       type: "todo_detail",
       title: todo.text,
-      id: todo.id.toString(),
+      id,
       html,
     }
 
@@ -67,7 +67,7 @@ export const sendTodoDeletedToAllConnections = async (id) => {
   for (const connection of connections) {
     const message = {
       type: 'todo_deleted',
-      id: id.toString()
+      id
     }
 
     const json = JSON.stringify(message)

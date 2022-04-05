@@ -34,7 +34,7 @@
 
       const id = location.pathname.split('/')[2];
 
-      if (json.id && json.id === id) {
+      if (json.id && json.id == id) {
         if (json.type === "todo_detail") {
           document.getElementById('detail').innerHTML = json.html;
           document.title = json.title
