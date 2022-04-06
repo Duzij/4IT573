@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "migrate": "npx knex migrate:latest --knexfile ./knexfile.js",
-    "test": "ava"
+    "test": "ava",
+    "lint": "npx eslint * --fix"
   },
   "repository": {
     "type": "git",
